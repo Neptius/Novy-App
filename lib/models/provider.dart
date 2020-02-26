@@ -1,16 +1,31 @@
+import 'dart:convert';
+
+List<Provider> providersFromJson(List<Object> data) => List<Provider>.from(data.map((x) => providerFromJson(x)));
+Provider providerFromJson(Object data) => Provider.fromMap(data);
+
+Object providersToJson(List<Provider> data) => List<dynamic>.from(data.map((x) => providerToJson(x)));
+Object providerToJson(Provider data) => data.toMap();
+
 class Provider {
-  Provider(this.id, this.name, this.lastName, this.age);
+  int id;
+  String label;
+  String method;
 
-  final String id;
-  final String name;
-  final String lastName;
-  final int age;
+  Provider({
+    this.id,
+    this.label,
+    this.method,
+  });
 
-  getId() => this.id;
+  factory Provider.fromMap(Map<String, dynamic> json) => Provider(
+    id: json["id"],
+    label: json["label"],
+    method: json["method"],
+  );
 
-  getName() => this.name;
-
-  getLastName() => this.lastName;
-
-  getAge() => this.age;
+  Map<String, dynamic> toMap() => {
+    "id": id,
+    "label": label,
+    "method": method,
+  };
 }
