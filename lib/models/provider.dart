@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 List<Provider> providersFromJson(List<Object> data) => List<Provider>.from(data.map((x) => providerFromJson(x)));
 Provider providerFromJson(Object data) => Provider.fromMap(data);
 

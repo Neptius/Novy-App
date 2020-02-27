@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:provider/provider.dart';
 
-import 'views/home/home.dart';
-import './client.dart';
+import './routes.dart';
+import './graphql.dart';
+
+import './providers/user.dart';
 
 void main() => runApp(MyApp());
 
@@ -10,18 +13,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return GraphQLProvider(
-      client: Config.initailizeClient(),
-      child: CacheProvider(
-        child :MaterialApp(
-          title: 'Flutter Demo',
-          theme: ThemeData(
-            primarySwatch: Colors.red,
-            brightness: Brightness.dark
-          ),
-          home: HomePage(title: 'Novy Home Page'),
-        )
-      )
-    );
+    return MultiProvider(
+        providers: [
+          ChangeNotifierProvider(create: (_) => UserProvider()),
+        ],
+        child: GraphQLProvider(
+            client: GraphqlModule.initClient(),
+            child: CacheProvider(
+                child: MaterialApp(
+              title: 'Flutter Demo',
+              theme: ThemeData(
+                  primarySwatch: Colors.red, brightness: Brightness.dark),
+              initialRoute: Routes.initialRoute,
+              routes: Routes.initRoutes(),
+            ))));
   }
 }
