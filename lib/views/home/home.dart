@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:graphql_flutter/graphql_flutter.dart';
-import 'package:flutter_web_auth/flutter_web_auth.dart';
 
 import '../../data/auth_provider_fetch.dart';
 import '../../data/authentication.dart';
