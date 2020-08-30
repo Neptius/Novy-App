@@ -3,7 +3,7 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 class GraphqlModule {
   static final HttpLink httpLink = HttpLink(
-    uri: 'http://10.0.0.14:9002/v1/graphql',
+    uri: 'http://192.168.1.32:10000/api',
   );
 
   static ValueNotifier<GraphQLClient> initClient() {

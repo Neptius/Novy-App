@@ -42,74 +42,23 @@ class _HomePageState extends State<HomePage> {
         ),
         body: Center(
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Query(
-                    options: QueryOptions(
-                      documentNode: gql(AuthProviderFetch.fetchAll),
-                      pollInterval: 10,
-                    ),
-                    builder: (QueryResult result,
-                        {VoidCallback refetch, FetchMore fetchMore}) {
-                      if (result.hasException) {
-                        return Text(result.exception.toString());
-                      }
-
-                      if (result.loading) {
-                        return Text('Loading');
-                      }
-
-                      List<Provider> providers =
-                      providersFromJson(result.data['auth_provider']);
-
-                      return ListView.builder(
-                          shrinkWrap: true,
-                          itemCount: providers.length,
-                          itemBuilder: (BuildContext context, int index) {
-                            return Mutation(
-                              options: MutationOptions(
-                                documentNode: gql(Authentication.initAuth),
-                                // this is the mutation string you just created
-                                // you can update the cache based on results
-                                update: (Cache cache, QueryResult result) {
-                                  return cache;
-                                },
-                                // or do something with the result.data on completion
-                                onCompleted: (dynamic resultData) {
-                                  String url = resultData.data["initAuth"];
-                                  initAuth(url);
-                                },
-                              ),
-                              builder: (RunMutation runMutation,
-                                  QueryResult result,) {
-                                return RaisedButton(
-                                    onPressed: () =>
-                                        runMutation({
-                                          'provider': providers[index].label,
-                                        }),
-                                    child: Text(providers[index].label));
-                              },
-                            );
-                          });
-                    }),
-                Text(
-                  'You have pushed the button this many times:',
-                ),
-                Text(
-                  '$_counter',
-                  style: Theme
-                      .of(context)
-                      .textTheme
-                      .display1,
-                ),
-                RaisedButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(DebugPage.routeName);
-                  },
-                  child: Text("Debug"),
-                )
-              ],
-            )),
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              'You have pushed the button this many times:',
+            ),
+            Text(
+              '$_counter',
+              style: Theme.of(context).textTheme.display1,
+            ),
+            RaisedButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(DebugPage.routeName);
+              },
+              child: Text("Debug"),
+            )
+          ],
+        )),
         floatingActionButton: FloatingActionButton(
           onPressed: _incrementCounter,
           tooltip: 'Increment',

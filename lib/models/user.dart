@@ -20,16 +20,16 @@ class Session {
   });
 
   factory Session.fromMap(Map<String, dynamic> json) => Session(
-    refreshToken: json["refreshToken"],
-    token: json["token"],
-    user: User.fromMap(json["user"]),
-  );
+        refreshToken: json["refreshToken"],
+        token: json["token"],
+        user: User.fromMap(json["user"]),
+      );
 
   Map<String, dynamic> toMap() => {
-    "refreshToken": refreshToken,
-    "token": token,
-    "user": user.toMap(),
-  };
+        "refreshToken": refreshToken,
+        "token": token,
+        "user": user.toMap(),
+      };
 }
 
 class User {
@@ -44,16 +44,16 @@ class User {
   });
 
   factory User.fromMap(Map<String, dynamic> json) => User(
-    authUserDefault: AuthUserDefault.fromMap(json["authUserDefault"]),
-    authUserDefaultId: json["authUserDefaultId"],
-    pseudo: json["pseudo"],
-  );
+        authUserDefault: AuthUserDefault.fromMap(json["authUserDefault"]),
+        authUserDefaultId: json["authUserDefaultId"],
+        pseudo: json["pseudo"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "authUserDefault": authUserDefault.toMap(),
-    "authUserDefaultId": authUserDefaultId,
-    "pseudo": pseudo,
-  };
+        "authUserDefault": authUserDefault.toMap(),
+        "authUserDefaultId": authUserDefaultId,
+        "pseudo": pseudo,
+      };
 }
 
 class AuthUserDefault {
@@ -64,10 +64,10 @@ class AuthUserDefault {
   });
 
   factory AuthUserDefault.fromMap(Map<String, dynamic> json) => AuthUserDefault(
-    authProviderUserImg: json["authProviderUserImg"],
-  );
+        authProviderUserImg: json["authProviderUserImg"],
+      );
 
   Map<String, dynamic> toMap() => {
-    "authProviderUserImg": authProviderUserImg,
-  };
+        "authProviderUserImg": authProviderUserImg,
+      };
 }

@@ -1,8 +1,8 @@
 class AuthProviderFetch {
   static String fetchAll = """query {
-    auth_provider {
+    authProviderBy {
       id
-      label
+      name
       method
     }
   }""";
