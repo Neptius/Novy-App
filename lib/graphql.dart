@@ -1,25 +1,24 @@
-import 'package:flutter/material.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
+import 'package:gql_http_link/gql_http_link.dart';
+import 'package:ferry/ferry.dart';
+import 'package:ferry_hive_store/ferry_hive_store.dart';
+import 'package:hive/hive.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
-class GraphqlModule {
-  static final HttpLink httpLink = HttpLink(
-    'http://10.0.0.14:10000/api',
+Future<Client> initClient() async {
+  await Hive.initFlutter();
+
+  final box = await Hive.openBox("graphql");
+
+  final store = HiveStore(box);
+
+  final cache = Cache(store: store);
+
+  final link = HttpLink("http://10.0.0.14:10000/api");
+
+  final client = Client(
+    link: link,
+    cache: cache,
   );
 
-  static final AuthLink authLink = AuthLink(
-    getToken: () async => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
-    // OR
-    // getToken: () => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
-  );
-
-  static final Link link = authLink.concat(httpLink);
-
-  static ValueNotifier<GraphQLClient> initClient = ValueNotifier(
-    GraphQLClient(
-      cache: GraphQLCache(
-        store: HiveStore(),
-      ),
-      link: link,
-    ),
-  );
+  return client;
 }

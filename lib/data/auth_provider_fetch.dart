@@ -7,7 +7,6 @@ class AuthProviderFetch {
     }
   }""";
 
-
   static String subscribeAdded = """subscription {
     authProviderAdded {
       id

@@ -1,6 +1,7 @@
+import 'package:ferry/ferry.dart';
 import 'package:flutter/material.dart';
-import 'package:graphql_flutter/graphql_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:get_it/get_it.dart';
 
 import './routes.dart';
 import './graphql.dart';
@@ -8,7 +9,8 @@ import './graphql.dart';
 import './providers/user.dart';
 
 void main() async {
-  await initHiveForFlutter();
+  final Client client = await initClient();
+  GetIt.I.registerLazySingleton<Client>(() => client);
   runApp(MyApp());
 }
 
@@ -20,15 +22,11 @@ class MyApp extends StatelessWidget {
         providers: [
           ChangeNotifierProvider(create: (_) => UserProvider()),
         ],
-        child: GraphQLProvider(
-            client: GraphqlModule.initClient,
-            child: CacheProvider(
-                child: MaterialApp(
-              title: 'Flutter Demo',
-              theme: ThemeData(
-                  primarySwatch: Colors.red, brightness: Brightness.dark),
-              initialRoute: Routes.initialRoute,
-              routes: Routes.initRoutes(),
-            ))));
+        child: MaterialApp(
+          title: 'Flutter Demo',
+          theme: ThemeData(brightness: Brightness.dark),
+          initialRoute: Routes.initialRoute,
+          routes: Routes.initRoutes(),
+        ));
   }
 }
