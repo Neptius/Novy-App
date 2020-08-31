@@ -1,0 +1,147 @@
+schema {
+  query: RootQueryType
+  mutation: RootMutationType
+  subscription: RootSubscriptionType
+}
+
+type AuthProvider {
+  active: Boolean
+  authProviderConfig: AuthProviderConfig
+  id: ID
+  method: String
+  name: String
+}
+
+type AuthProviderConfig {
+  authorizeUrl: String
+  clientId: String
+  clientSecret: String
+  redirectUrl: String
+  responseType: String
+  scope: String
+  tokenUrl: String
+  userIdPath: String
+  userImgPath: String
+  userImgUrl: String
+  userPath: String
+  userPseudoPath: String
+  userUrl: String
+}
+
+input AuthProviderConfigExp {
+  _and: [AuthProviderExp]
+  _not: [AuthProviderExp]
+  _or: [AuthProviderExp]
+  authorizeUrl: TextGenericExp
+  clientId: TextGenericExp
+  clientSecret: TextGenericExp
+  redirectUrl: TextGenericExp
+  responseType: TextGenericExp
+  scope: TextGenericExp
+  tokenUrl: TextGenericExp
+  userIdPath: TextGenericExp
+  userImgPath: TextGenericExp
+  userImgUrl: TextGenericExp
+  userPath: TextGenericExp
+  userPseudoPath: TextGenericExp
+  userUrl: TextGenericExp
+}
+
+input AuthProviderCreateInput {
+  active: Boolean = false
+  method: String!
+  name: String!
+}
+
+input AuthProviderExp {
+  _and: [AuthProviderExp]
+  _not: [AuthProviderExp]
+  _or: [AuthProviderExp]
+  active: BooleanGenericExp
+  authProviderConfig: AuthProviderConfigExp
+  id: IntegerGenericExp
+  method: TextGenericExp
+  name: TextGenericExp
+}
+
+input AuthProviderOrderBy {
+  active: OrderBy
+  id: OrderBy
+  method: OrderBy
+  name: OrderBy
+}
+
+input AuthProviderUpdateInput {
+  active: Boolean
+  id: ID!
+  method: String
+  name: String
+}
+
+input BooleanGenericExp {
+  eq: Boolean
+  gt: Boolean
+  gte: Boolean
+  in: [Boolean]
+  isnull: Boolean
+  lt: Boolean
+  lte: Boolean
+  neq: Boolean
+  nin: [Boolean]
+}
+
+input IntegerGenericExp {
+  eq: Int
+  gt: Int
+  gte: Int
+  in: [Int]
+  isnull: Boolean
+  lt: Int
+  lte: Int
+  neq: Int
+  nin: [Int]
+}
+
+enum OrderBy {
+  ASC
+  DESC
+}
+
+type RootMutationType {
+  """Créé un auth provider"""
+  createAuthProvider(authProvider: AuthProviderCreateInput!): AuthProvider
+
+  """Modifie un auth provider"""
+  updateAuthProvider(authProvider: AuthProviderUpdateInput!): AuthProvider
+}
+
+type RootQueryType {
+  """Récupère une liste d'auth provider"""
+  authProviderBy(limit: Int, offset: Int, orderBy: [AuthProviderOrderBy], where: AuthProviderExp): [AuthProvider]
+
+  """Récupère un auth provider par sa clé primaire"""
+  authProviderByPk(id: ID!): AuthProvider
+}
+
+type RootSubscriptionType {
+  authProviderAdded: AuthProvider
+}
+
+input TextGenericExp {
+  eq: String
+  gt: String
+  gte: String
+  ilike: String
+  in: [String]
+  isnull: Boolean
+  like: String
+  lt: String
+  lte: String
+  neq: String
+  nilike: String
+  nin: [String]
+  nlike: String
+  nsimilar: String
+  similar: String
+}
+
