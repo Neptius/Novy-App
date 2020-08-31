@@ -17,16 +17,14 @@ class DebugPage extends StatelessWidget {
           elevation: 0,
         ),
         body: Query(
-            options: QueryOptions(
-              documentNode: gql(AuthProviderFetch.fetchAll)
-            ),
+            options: QueryOptions(document: gql(AuthProviderFetch.fetchAll)),
             builder: (QueryResult result,
                 {VoidCallback refetch, FetchMore fetchMore}) {
               if (result.hasException) {
                 return Text(result.exception.toString());
               }
 
-              if (result.loading) {
+              if (result.isLoading) {
                 return Text('Loading');
               }
 

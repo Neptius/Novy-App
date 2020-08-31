@@ -3,17 +3,23 @@ import 'package:graphql_flutter/graphql_flutter.dart';
 
 class GraphqlModule {
   static final HttpLink httpLink = HttpLink(
-    uri: 'http://192.168.1.32:10000/api',
+    'http://10.0.0.14:10000/api',
   );
 
-  static ValueNotifier<GraphQLClient> initClient() {
-    ValueNotifier<GraphQLClient> client = ValueNotifier(
-      GraphQLClient(
-        cache: OptimisticCache(dataIdFromObject: typenameDataIdFromObject),
-        link: httpLink,
-      ),
-    );
+  static final AuthLink authLink = AuthLink(
+    getToken: () async => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
+    // OR
+    // getToken: () => 'Bearer <YOUR_PERSONAL_ACCESS_TOKEN>',
+  );
 
-    return client;
-  }
+  static final Link link = authLink.concat(httpLink);
+
+  static ValueNotifier<GraphQLClient> initClient = ValueNotifier(
+    GraphQLClient(
+      cache: GraphQLCache(
+        store: HiveStore(),
+      ),
+      link: link,
+    ),
+  );
 }

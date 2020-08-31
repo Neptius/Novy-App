@@ -6,4 +6,14 @@ class AuthProviderFetch {
       method
     }
   }""";
+
+
+  static String subscribeAdded = """subscription {
+    authProviderAdded {
+      id
+      name
+      method
+      active
+    }
+  }""";
 }

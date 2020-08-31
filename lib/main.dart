@@ -7,7 +7,10 @@ import './graphql.dart';
 
 import './providers/user.dart';
 
-void main() => runApp(MyApp());
+void main() async {
+  await initHiveForFlutter();
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -18,7 +21,7 @@ class MyApp extends StatelessWidget {
           ChangeNotifierProvider(create: (_) => UserProvider()),
         ],
         child: GraphQLProvider(
-            client: GraphqlModule.initClient(),
+            client: GraphqlModule.initClient,
             child: CacheProvider(
                 child: MaterialApp(
               title: 'Flutter Demo',
