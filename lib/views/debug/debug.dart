@@ -4,9 +4,9 @@ import 'package:get_it/get_it.dart';
 import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:built_collection/built_collection.dart';
 
-import './graphql/auth_provider_by.data.gql.dart';
-import './graphql/auth_provider_by.req.gql.dart';
-import './graphql/auth_provider_by.var.gql.dart';
+import './graphql/auth_provider.data.gql.dart';
+import './graphql/auth_provider.req.gql.dart';
+import './graphql/auth_provider.var.gql.dart';
 
 class DebugPage extends StatelessWidget {
   static const routeName = "/debug";
@@ -23,9 +23,9 @@ class DebugPage extends StatelessWidget {
         body: Query(
 
             client: client,
-            operationRequest: GAuthProviderByReq(),
+            operationRequest: GAuthProviderReq(),
             builder: (BuildContext context,
-                OperationResponse<GAuthProviderByData, GAuthProviderByVars>
+                OperationResponse<GAuthProviderData, GAuthProviderVars>
                 response) {
               if (response.hasErrors) {
                 return Text(response.graphqlErrors.toString());
@@ -36,7 +36,7 @@ class DebugPage extends StatelessWidget {
               }
 
               final authProviders =
-                  response.data?.authProviderBy ?? BuiltList();
+                  response.data?.auth_provider ?? BuiltList();
 
               print(authProviders);
               print(authProviders.length);

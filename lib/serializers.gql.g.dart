@@ -7,45 +7,104 @@ part of 'serializers.gql.dart';
 // **************************************************************************
 
 Serializers _$serializers = (new Serializers().toBuilder()
-      ..add(GAuthProviderAddedData.serializer)
-      ..add(GAuthProviderAddedData_authProviderAdded.serializer)
-      ..add(GAuthProviderAddedReq.serializer)
-      ..add(GAuthProviderAddedVars.serializer)
-      ..add(GAuthProviderByData.serializer)
-      ..add(GAuthProviderByData_authProviderBy.serializer)
-      ..add(GAuthProviderByReq.serializer)
-      ..add(GAuthProviderByVars.serializer)
-      ..add(GAuthProviderConfigExp.serializer)
-      ..add(GAuthProviderCreateInput.serializer)
-      ..add(GAuthProviderExp.serializer)
-      ..add(GAuthProviderOrderBy.serializer)
-      ..add(GAuthProviderUpdateInput.serializer)
-      ..add(GBooleanGenericExp.serializer)
-      ..add(GIntegerGenericExp.serializer)
-      ..add(GOrderBy.serializer)
-      ..add(GTextGenericExp.serializer)
+      ..add(GAuthProviderData.serializer)
+      ..add(GAuthProviderData_auth_provider.serializer)
+      ..add(GAuthProviderReq.serializer)
+      ..add(GAuthProviderVars.serializer)
+      ..add(GBoolean_comparison_exp.serializer)
+      ..add(GInt_comparison_exp.serializer)
+      ..add(GString_comparison_exp.serializer)
+      ..add(Gauth_provider_aggregate_order_by.serializer)
+      ..add(Gauth_provider_arr_rel_insert_input.serializer)
+      ..add(Gauth_provider_avg_order_by.serializer)
+      ..add(Gauth_provider_bool_exp.serializer)
+      ..add(Gauth_provider_config_aggregate_order_by.serializer)
+      ..add(Gauth_provider_config_arr_rel_insert_input.serializer)
+      ..add(Gauth_provider_config_avg_order_by.serializer)
+      ..add(Gauth_provider_config_bool_exp.serializer)
+      ..add(Gauth_provider_config_constraint.serializer)
+      ..add(Gauth_provider_config_inc_input.serializer)
+      ..add(Gauth_provider_config_insert_input.serializer)
+      ..add(Gauth_provider_config_max_order_by.serializer)
+      ..add(Gauth_provider_config_min_order_by.serializer)
+      ..add(Gauth_provider_config_obj_rel_insert_input.serializer)
+      ..add(Gauth_provider_config_on_conflict.serializer)
+      ..add(Gauth_provider_config_order_by.serializer)
+      ..add(Gauth_provider_config_pk_columns_input.serializer)
+      ..add(Gauth_provider_config_select_column.serializer)
+      ..add(Gauth_provider_config_set_input.serializer)
+      ..add(Gauth_provider_config_stddev_order_by.serializer)
+      ..add(Gauth_provider_config_stddev_pop_order_by.serializer)
+      ..add(Gauth_provider_config_stddev_samp_order_by.serializer)
+      ..add(Gauth_provider_config_sum_order_by.serializer)
+      ..add(Gauth_provider_config_update_column.serializer)
+      ..add(Gauth_provider_config_var_pop_order_by.serializer)
+      ..add(Gauth_provider_config_var_samp_order_by.serializer)
+      ..add(Gauth_provider_config_variance_order_by.serializer)
+      ..add(Gauth_provider_constraint.serializer)
+      ..add(Gauth_provider_inc_input.serializer)
+      ..add(Gauth_provider_insert_input.serializer)
+      ..add(Gauth_provider_max_order_by.serializer)
+      ..add(Gauth_provider_min_order_by.serializer)
+      ..add(Gauth_provider_obj_rel_insert_input.serializer)
+      ..add(Gauth_provider_on_conflict.serializer)
+      ..add(Gauth_provider_order_by.serializer)
+      ..add(Gauth_provider_pk_columns_input.serializer)
+      ..add(Gauth_provider_select_column.serializer)
+      ..add(Gauth_provider_set_input.serializer)
+      ..add(Gauth_provider_stddev_order_by.serializer)
+      ..add(Gauth_provider_stddev_pop_order_by.serializer)
+      ..add(Gauth_provider_stddev_samp_order_by.serializer)
+      ..add(Gauth_provider_sum_order_by.serializer)
+      ..add(Gauth_provider_update_column.serializer)
+      ..add(Gauth_provider_var_pop_order_by.serializer)
+      ..add(Gauth_provider_var_samp_order_by.serializer)
+      ..add(Gauth_provider_variance_order_by.serializer)
+      ..add(Gorder_by.serializer)
+      ..add(Gtimestamptz.serializer)
+      ..add(Gtimestamptz_comparison_exp.serializer)
       ..addBuilderFactory(
           const FullType(BuiltList,
-              const [const FullType(GAuthProviderByData_authProviderBy)]),
-          () => new ListBuilder<GAuthProviderByData_authProviderBy>())
+              const [const FullType(GAuthProviderData_auth_provider)]),
+          () => new ListBuilder<GAuthProviderData_auth_provider>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GAuthProviderExp)]),
-          () => new ListBuilder<GAuthProviderExp>())
+          const FullType(
+              BuiltList, const [const FullType(Gauth_provider_bool_exp)]),
+          () => new ListBuilder<Gauth_provider_bool_exp>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GAuthProviderExp)]),
-          () => new ListBuilder<GAuthProviderExp>())
+          const FullType(
+              BuiltList, const [const FullType(Gauth_provider_bool_exp)]),
+          () => new ListBuilder<Gauth_provider_bool_exp>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GAuthProviderExp)]),
-          () => new ListBuilder<GAuthProviderExp>())
+          const FullType(BuiltList,
+              const [const FullType(Gauth_provider_config_bool_exp)]),
+          () => new ListBuilder<Gauth_provider_config_bool_exp>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GAuthProviderExp)]),
-          () => new ListBuilder<GAuthProviderExp>())
+          const FullType(BuiltList,
+              const [const FullType(Gauth_provider_config_bool_exp)]),
+          () => new ListBuilder<Gauth_provider_config_bool_exp>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GAuthProviderExp)]),
-          () => new ListBuilder<GAuthProviderExp>())
+          const FullType(BuiltList,
+              const [const FullType(Gauth_provider_config_insert_input)]),
+          () => new ListBuilder<Gauth_provider_config_insert_input>())
       ..addBuilderFactory(
-          const FullType(BuiltList, const [const FullType(GAuthProviderExp)]),
-          () => new ListBuilder<GAuthProviderExp>())
+          const FullType(BuiltList,
+              const [const FullType(Gauth_provider_config_update_column)]),
+          () => new ListBuilder<Gauth_provider_config_update_column>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(Gauth_provider_insert_input)]),
+          () => new ListBuilder<Gauth_provider_insert_input>())
+      ..addBuilderFactory(
+          const FullType(
+              BuiltList, const [const FullType(Gauth_provider_update_column)]),
+          () => new ListBuilder<Gauth_provider_update_column>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Gtimestamptz)]),
+          () => new ListBuilder<Gtimestamptz>())
+      ..addBuilderFactory(
+          const FullType(BuiltList, const [const FullType(Gtimestamptz)]),
+          () => new ListBuilder<Gtimestamptz>())
       ..addBuilderFactory(
           const FullType(BuiltList, const [const FullType(String)]),
           () => new ListBuilder<String>())

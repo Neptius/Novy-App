@@ -19,12 +19,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  ferry: ^0.5.1+2
-  ferry_flutter: ^0.2.0
-  gql_http_link: ^0.2.9
-  hive: ^1.4.4
-  hive_flutter: ^0.3.1
-  ferry_hive_store: ^0.1.0
+  ferry: #[latest-version]
+  ferry_flutter: #[latest-version]
+  gql_http_link: #[latest-version]
+  hive: #[latest-version]
+  ferry_hive_store: #[latest-version]
+  hive_flutter: #[latest-version]
   get_it: ^4.0.4
 
 
@@ -32,14 +32,13 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
 
-  provider: ^4.0.4
-  url_launcher: ^5.4.2
+  provider: ^4.3.2+2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  ferry_generator: ^0.2.0
-  build_runner: ^1.10.2
+  ferry_generator: #[latest-version]
+  build_runner: #[latest-version]
 
 
 # For information on the generic Dart part of this file, see the

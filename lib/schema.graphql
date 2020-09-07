@@ -1,147 +1,1284 @@
 schema {
-  query: RootQueryType
-  mutation: RootMutationType
-  subscription: RootSubscriptionType
+  query: query_root
+  mutation: mutation_root
+  subscription: subscription_root
 }
 
-type AuthProvider {
-  active: Boolean
-  authProviderConfig: AuthProviderConfig
-  id: ID
-  method: String
-  name: String
-}
+"""
+columns and relationships of "auth_provider"
+"""
+type auth_provider {
+  active: Boolean!
 
-type AuthProviderConfig {
-  authorizeUrl: String
-  clientId: String
-  clientSecret: String
-  redirectUrl: String
-  responseType: String
-  scope: String
-  tokenUrl: String
-  userIdPath: String
-  userImgPath: String
-  userImgUrl: String
-  userPath: String
-  userPseudoPath: String
-  userUrl: String
-}
-
-input AuthProviderConfigExp {
-  _and: [AuthProviderExp]
-  _not: [AuthProviderExp]
-  _or: [AuthProviderExp]
-  authorizeUrl: TextGenericExp
-  clientId: TextGenericExp
-  clientSecret: TextGenericExp
-  redirectUrl: TextGenericExp
-  responseType: TextGenericExp
-  scope: TextGenericExp
-  tokenUrl: TextGenericExp
-  userIdPath: TextGenericExp
-  userImgPath: TextGenericExp
-  userImgUrl: TextGenericExp
-  userPath: TextGenericExp
-  userPseudoPath: TextGenericExp
-  userUrl: TextGenericExp
-}
-
-input AuthProviderCreateInput {
-  active: Boolean = false
+  """An object relationship"""
+  auth_provider_config: auth_provider_config
+  created_at: timestamptz!
+  id: Int!
   method: String!
   name: String!
+  updated_at: timestamptz!
 }
 
-input AuthProviderExp {
-  _and: [AuthProviderExp]
-  _not: [AuthProviderExp]
-  _or: [AuthProviderExp]
-  active: BooleanGenericExp
-  authProviderConfig: AuthProviderConfigExp
-  id: IntegerGenericExp
-  method: TextGenericExp
-  name: TextGenericExp
+"""
+aggregated selection of "auth_provider"
+"""
+type auth_provider_aggregate {
+  aggregate: auth_provider_aggregate_fields
+  nodes: [auth_provider!]!
 }
 
-input AuthProviderOrderBy {
-  active: OrderBy
-  id: OrderBy
-  method: OrderBy
-  name: OrderBy
+"""
+aggregate fields of "auth_provider"
+"""
+type auth_provider_aggregate_fields {
+  avg: auth_provider_avg_fields
+  count(columns: [auth_provider_select_column!], distinct: Boolean): Int
+  max: auth_provider_max_fields
+  min: auth_provider_min_fields
+  stddev: auth_provider_stddev_fields
+  stddev_pop: auth_provider_stddev_pop_fields
+  stddev_samp: auth_provider_stddev_samp_fields
+  sum: auth_provider_sum_fields
+  var_pop: auth_provider_var_pop_fields
+  var_samp: auth_provider_var_samp_fields
+  variance: auth_provider_variance_fields
 }
 
-input AuthProviderUpdateInput {
+"""
+order by aggregate values of table "auth_provider"
+"""
+input auth_provider_aggregate_order_by {
+  avg: auth_provider_avg_order_by
+  count: order_by
+  max: auth_provider_max_order_by
+  min: auth_provider_min_order_by
+  stddev: auth_provider_stddev_order_by
+  stddev_pop: auth_provider_stddev_pop_order_by
+  stddev_samp: auth_provider_stddev_samp_order_by
+  sum: auth_provider_sum_order_by
+  var_pop: auth_provider_var_pop_order_by
+  var_samp: auth_provider_var_samp_order_by
+  variance: auth_provider_variance_order_by
+}
+
+"""
+input type for inserting array relation for remote table "auth_provider"
+"""
+input auth_provider_arr_rel_insert_input {
+  data: [auth_provider_insert_input!]!
+  on_conflict: auth_provider_on_conflict
+}
+
+"""aggregate avg on columns"""
+type auth_provider_avg_fields {
+  id: Float
+}
+
+"""
+order by avg() on columns of table "auth_provider"
+"""
+input auth_provider_avg_order_by {
+  id: order_by
+}
+
+"""
+Boolean expression to filter rows from the table "auth_provider". All fields are combined with a logical 'AND'.
+"""
+input auth_provider_bool_exp {
+  _and: [auth_provider_bool_exp]
+  _not: auth_provider_bool_exp
+  _or: [auth_provider_bool_exp]
+  active: Boolean_comparison_exp
+  auth_provider_config: auth_provider_config_bool_exp
+  created_at: timestamptz_comparison_exp
+  id: Int_comparison_exp
+  method: String_comparison_exp
+  name: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+}
+
+"""
+columns and relationships of "auth_provider_config"
+"""
+type auth_provider_config {
+  auth_provider_id: Int!
+  authorize_url: String!
+  client_id: String!
+  client_secret: String!
+  created_at: timestamptz!
+  id: Int!
+  redirect_url: String!
+  response_type: String!
+  scope: String!
+  token_url: String!
+  updated_at: timestamptz!
+  user_id_path: String!
+  user_img_path: String!
+  user_img_url: String!
+  user_path: String!
+  user_pseudo_path: String!
+  user_url: String!
+}
+
+"""
+aggregated selection of "auth_provider_config"
+"""
+type auth_provider_config_aggregate {
+  aggregate: auth_provider_config_aggregate_fields
+  nodes: [auth_provider_config!]!
+}
+
+"""
+aggregate fields of "auth_provider_config"
+"""
+type auth_provider_config_aggregate_fields {
+  avg: auth_provider_config_avg_fields
+  count(columns: [auth_provider_config_select_column!], distinct: Boolean): Int
+  max: auth_provider_config_max_fields
+  min: auth_provider_config_min_fields
+  stddev: auth_provider_config_stddev_fields
+  stddev_pop: auth_provider_config_stddev_pop_fields
+  stddev_samp: auth_provider_config_stddev_samp_fields
+  sum: auth_provider_config_sum_fields
+  var_pop: auth_provider_config_var_pop_fields
+  var_samp: auth_provider_config_var_samp_fields
+  variance: auth_provider_config_variance_fields
+}
+
+"""
+order by aggregate values of table "auth_provider_config"
+"""
+input auth_provider_config_aggregate_order_by {
+  avg: auth_provider_config_avg_order_by
+  count: order_by
+  max: auth_provider_config_max_order_by
+  min: auth_provider_config_min_order_by
+  stddev: auth_provider_config_stddev_order_by
+  stddev_pop: auth_provider_config_stddev_pop_order_by
+  stddev_samp: auth_provider_config_stddev_samp_order_by
+  sum: auth_provider_config_sum_order_by
+  var_pop: auth_provider_config_var_pop_order_by
+  var_samp: auth_provider_config_var_samp_order_by
+  variance: auth_provider_config_variance_order_by
+}
+
+"""
+input type for inserting array relation for remote table "auth_provider_config"
+"""
+input auth_provider_config_arr_rel_insert_input {
+  data: [auth_provider_config_insert_input!]!
+  on_conflict: auth_provider_config_on_conflict
+}
+
+"""aggregate avg on columns"""
+type auth_provider_config_avg_fields {
+  auth_provider_id: Float
+  id: Float
+}
+
+"""
+order by avg() on columns of table "auth_provider_config"
+"""
+input auth_provider_config_avg_order_by {
+  auth_provider_id: order_by
+  id: order_by
+}
+
+"""
+Boolean expression to filter rows from the table "auth_provider_config". All fields are combined with a logical 'AND'.
+"""
+input auth_provider_config_bool_exp {
+  _and: [auth_provider_config_bool_exp]
+  _not: auth_provider_config_bool_exp
+  _or: [auth_provider_config_bool_exp]
+  auth_provider_id: Int_comparison_exp
+  authorize_url: String_comparison_exp
+  client_id: String_comparison_exp
+  client_secret: String_comparison_exp
+  created_at: timestamptz_comparison_exp
+  id: Int_comparison_exp
+  redirect_url: String_comparison_exp
+  response_type: String_comparison_exp
+  scope: String_comparison_exp
+  token_url: String_comparison_exp
+  updated_at: timestamptz_comparison_exp
+  user_id_path: String_comparison_exp
+  user_img_path: String_comparison_exp
+  user_img_url: String_comparison_exp
+  user_path: String_comparison_exp
+  user_pseudo_path: String_comparison_exp
+  user_url: String_comparison_exp
+}
+
+"""
+unique or primary key constraints on table "auth_provider_config"
+"""
+enum auth_provider_config_constraint {
+  """unique or primary key constraint"""
+  autth_provider_config_pkey
+}
+
+"""
+input type for incrementing integer column in table "auth_provider_config"
+"""
+input auth_provider_config_inc_input {
+  auth_provider_id: Int
+  id: Int
+}
+
+"""
+input type for inserting data into table "auth_provider_config"
+"""
+input auth_provider_config_insert_input {
+  auth_provider_id: Int
+  authorize_url: String
+  client_id: String
+  client_secret: String
+  created_at: timestamptz
+  id: Int
+  redirect_url: String
+  response_type: String
+  scope: String
+  token_url: String
+  updated_at: timestamptz
+  user_id_path: String
+  user_img_path: String
+  user_img_url: String
+  user_path: String
+  user_pseudo_path: String
+  user_url: String
+}
+
+"""aggregate max on columns"""
+type auth_provider_config_max_fields {
+  auth_provider_id: Int
+  authorize_url: String
+  client_id: String
+  client_secret: String
+  created_at: timestamptz
+  id: Int
+  redirect_url: String
+  response_type: String
+  scope: String
+  token_url: String
+  updated_at: timestamptz
+  user_id_path: String
+  user_img_path: String
+  user_img_url: String
+  user_path: String
+  user_pseudo_path: String
+  user_url: String
+}
+
+"""
+order by max() on columns of table "auth_provider_config"
+"""
+input auth_provider_config_max_order_by {
+  auth_provider_id: order_by
+  authorize_url: order_by
+  client_id: order_by
+  client_secret: order_by
+  created_at: order_by
+  id: order_by
+  redirect_url: order_by
+  response_type: order_by
+  scope: order_by
+  token_url: order_by
+  updated_at: order_by
+  user_id_path: order_by
+  user_img_path: order_by
+  user_img_url: order_by
+  user_path: order_by
+  user_pseudo_path: order_by
+  user_url: order_by
+}
+
+"""aggregate min on columns"""
+type auth_provider_config_min_fields {
+  auth_provider_id: Int
+  authorize_url: String
+  client_id: String
+  client_secret: String
+  created_at: timestamptz
+  id: Int
+  redirect_url: String
+  response_type: String
+  scope: String
+  token_url: String
+  updated_at: timestamptz
+  user_id_path: String
+  user_img_path: String
+  user_img_url: String
+  user_path: String
+  user_pseudo_path: String
+  user_url: String
+}
+
+"""
+order by min() on columns of table "auth_provider_config"
+"""
+input auth_provider_config_min_order_by {
+  auth_provider_id: order_by
+  authorize_url: order_by
+  client_id: order_by
+  client_secret: order_by
+  created_at: order_by
+  id: order_by
+  redirect_url: order_by
+  response_type: order_by
+  scope: order_by
+  token_url: order_by
+  updated_at: order_by
+  user_id_path: order_by
+  user_img_path: order_by
+  user_img_url: order_by
+  user_path: order_by
+  user_pseudo_path: order_by
+  user_url: order_by
+}
+
+"""
+response of any mutation on the table "auth_provider_config"
+"""
+type auth_provider_config_mutation_response {
+  """number of affected rows by the mutation"""
+  affected_rows: Int!
+
+  """data of the affected rows by the mutation"""
+  returning: [auth_provider_config!]!
+}
+
+"""
+input type for inserting object relation for remote table "auth_provider_config"
+"""
+input auth_provider_config_obj_rel_insert_input {
+  data: auth_provider_config_insert_input!
+  on_conflict: auth_provider_config_on_conflict
+}
+
+"""
+on conflict condition type for table "auth_provider_config"
+"""
+input auth_provider_config_on_conflict {
+  constraint: auth_provider_config_constraint!
+  update_columns: [auth_provider_config_update_column!]!
+  where: auth_provider_config_bool_exp
+}
+
+"""
+ordering options when selecting data from "auth_provider_config"
+"""
+input auth_provider_config_order_by {
+  auth_provider_id: order_by
+  authorize_url: order_by
+  client_id: order_by
+  client_secret: order_by
+  created_at: order_by
+  id: order_by
+  redirect_url: order_by
+  response_type: order_by
+  scope: order_by
+  token_url: order_by
+  updated_at: order_by
+  user_id_path: order_by
+  user_img_path: order_by
+  user_img_url: order_by
+  user_path: order_by
+  user_pseudo_path: order_by
+  user_url: order_by
+}
+
+"""
+primary key columns input for table: "auth_provider_config"
+"""
+input auth_provider_config_pk_columns_input {
+  id: Int!
+}
+
+"""
+select columns of table "auth_provider_config"
+"""
+enum auth_provider_config_select_column {
+  """column name"""
+  auth_provider_id
+
+  """column name"""
+  authorize_url
+
+  """column name"""
+  client_id
+
+  """column name"""
+  client_secret
+
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  redirect_url
+
+  """column name"""
+  response_type
+
+  """column name"""
+  scope
+
+  """column name"""
+  token_url
+
+  """column name"""
+  updated_at
+
+  """column name"""
+  user_id_path
+
+  """column name"""
+  user_img_path
+
+  """column name"""
+  user_img_url
+
+  """column name"""
+  user_path
+
+  """column name"""
+  user_pseudo_path
+
+  """column name"""
+  user_url
+}
+
+"""
+input type for updating data in table "auth_provider_config"
+"""
+input auth_provider_config_set_input {
+  auth_provider_id: Int
+  authorize_url: String
+  client_id: String
+  client_secret: String
+  created_at: timestamptz
+  id: Int
+  redirect_url: String
+  response_type: String
+  scope: String
+  token_url: String
+  updated_at: timestamptz
+  user_id_path: String
+  user_img_path: String
+  user_img_url: String
+  user_path: String
+  user_pseudo_path: String
+  user_url: String
+}
+
+"""aggregate stddev on columns"""
+type auth_provider_config_stddev_fields {
+  auth_provider_id: Float
+  id: Float
+}
+
+"""
+order by stddev() on columns of table "auth_provider_config"
+"""
+input auth_provider_config_stddev_order_by {
+  auth_provider_id: order_by
+  id: order_by
+}
+
+"""aggregate stddev_pop on columns"""
+type auth_provider_config_stddev_pop_fields {
+  auth_provider_id: Float
+  id: Float
+}
+
+"""
+order by stddev_pop() on columns of table "auth_provider_config"
+"""
+input auth_provider_config_stddev_pop_order_by {
+  auth_provider_id: order_by
+  id: order_by
+}
+
+"""aggregate stddev_samp on columns"""
+type auth_provider_config_stddev_samp_fields {
+  auth_provider_id: Float
+  id: Float
+}
+
+"""
+order by stddev_samp() on columns of table "auth_provider_config"
+"""
+input auth_provider_config_stddev_samp_order_by {
+  auth_provider_id: order_by
+  id: order_by
+}
+
+"""aggregate sum on columns"""
+type auth_provider_config_sum_fields {
+  auth_provider_id: Int
+  id: Int
+}
+
+"""
+order by sum() on columns of table "auth_provider_config"
+"""
+input auth_provider_config_sum_order_by {
+  auth_provider_id: order_by
+  id: order_by
+}
+
+"""
+update columns of table "auth_provider_config"
+"""
+enum auth_provider_config_update_column {
+  """column name"""
+  auth_provider_id
+
+  """column name"""
+  authorize_url
+
+  """column name"""
+  client_id
+
+  """column name"""
+  client_secret
+
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  redirect_url
+
+  """column name"""
+  response_type
+
+  """column name"""
+  scope
+
+  """column name"""
+  token_url
+
+  """column name"""
+  updated_at
+
+  """column name"""
+  user_id_path
+
+  """column name"""
+  user_img_path
+
+  """column name"""
+  user_img_url
+
+  """column name"""
+  user_path
+
+  """column name"""
+  user_pseudo_path
+
+  """column name"""
+  user_url
+}
+
+"""aggregate var_pop on columns"""
+type auth_provider_config_var_pop_fields {
+  auth_provider_id: Float
+  id: Float
+}
+
+"""
+order by var_pop() on columns of table "auth_provider_config"
+"""
+input auth_provider_config_var_pop_order_by {
+  auth_provider_id: order_by
+  id: order_by
+}
+
+"""aggregate var_samp on columns"""
+type auth_provider_config_var_samp_fields {
+  auth_provider_id: Float
+  id: Float
+}
+
+"""
+order by var_samp() on columns of table "auth_provider_config"
+"""
+input auth_provider_config_var_samp_order_by {
+  auth_provider_id: order_by
+  id: order_by
+}
+
+"""aggregate variance on columns"""
+type auth_provider_config_variance_fields {
+  auth_provider_id: Float
+  id: Float
+}
+
+"""
+order by variance() on columns of table "auth_provider_config"
+"""
+input auth_provider_config_variance_order_by {
+  auth_provider_id: order_by
+  id: order_by
+}
+
+"""
+unique or primary key constraints on table "auth_provider"
+"""
+enum auth_provider_constraint {
+  """unique or primary key constraint"""
+  auth_provider_pkey
+}
+
+"""
+input type for incrementing integer column in table "auth_provider"
+"""
+input auth_provider_inc_input {
+  id: Int
+}
+
+"""
+input type for inserting data into table "auth_provider"
+"""
+input auth_provider_insert_input {
   active: Boolean
-  id: ID!
+  auth_provider_config: auth_provider_config_obj_rel_insert_input
+  created_at: timestamptz
+  id: Int
   method: String
   name: String
+  updated_at: timestamptz
 }
 
-input BooleanGenericExp {
-  eq: Boolean
-  gt: Boolean
-  gte: Boolean
-  in: [Boolean]
-  isnull: Boolean
-  lt: Boolean
-  lte: Boolean
-  neq: Boolean
-  nin: [Boolean]
+"""aggregate max on columns"""
+type auth_provider_max_fields {
+  created_at: timestamptz
+  id: Int
+  method: String
+  name: String
+  updated_at: timestamptz
 }
 
-input IntegerGenericExp {
-  eq: Int
-  gt: Int
-  gte: Int
-  in: [Int]
-  isnull: Boolean
-  lt: Int
-  lte: Int
-  neq: Int
-  nin: [Int]
+"""
+order by max() on columns of table "auth_provider"
+"""
+input auth_provider_max_order_by {
+  created_at: order_by
+  id: order_by
+  method: order_by
+  name: order_by
+  updated_at: order_by
 }
 
-enum OrderBy {
-  ASC
-  DESC
+"""aggregate min on columns"""
+type auth_provider_min_fields {
+  created_at: timestamptz
+  id: Int
+  method: String
+  name: String
+  updated_at: timestamptz
 }
 
-type RootMutationType {
-  """Créé un auth provider"""
-  createAuthProvider(authProvider: AuthProviderCreateInput!): AuthProvider
-
-  """Modifie un auth provider"""
-  updateAuthProvider(authProvider: AuthProviderUpdateInput!): AuthProvider
+"""
+order by min() on columns of table "auth_provider"
+"""
+input auth_provider_min_order_by {
+  created_at: order_by
+  id: order_by
+  method: order_by
+  name: order_by
+  updated_at: order_by
 }
 
-type RootQueryType {
-  """Récupère une liste d'auth provider"""
-  authProviderBy(limit: Int, offset: Int, orderBy: [AuthProviderOrderBy], where: AuthProviderExp): [AuthProvider]
+"""
+response of any mutation on the table "auth_provider"
+"""
+type auth_provider_mutation_response {
+  """number of affected rows by the mutation"""
+  affected_rows: Int!
 
-  """Récupère un auth provider par sa clé primaire"""
-  authProviderByPk(id: ID!): AuthProvider
+  """data of the affected rows by the mutation"""
+  returning: [auth_provider!]!
 }
 
-type RootSubscriptionType {
-  authProviderAdded: AuthProvider
+"""
+input type for inserting object relation for remote table "auth_provider"
+"""
+input auth_provider_obj_rel_insert_input {
+  data: auth_provider_insert_input!
+  on_conflict: auth_provider_on_conflict
 }
 
-input TextGenericExp {
-  eq: String
-  gt: String
-  gte: String
-  ilike: String
-  in: [String]
-  isnull: Boolean
-  like: String
-  lt: String
-  lte: String
-  neq: String
-  nilike: String
-  nin: [String]
-  nlike: String
-  nsimilar: String
-  similar: String
+"""
+on conflict condition type for table "auth_provider"
+"""
+input auth_provider_on_conflict {
+  constraint: auth_provider_constraint!
+  update_columns: [auth_provider_update_column!]!
+  where: auth_provider_bool_exp
+}
+
+"""
+ordering options when selecting data from "auth_provider"
+"""
+input auth_provider_order_by {
+  active: order_by
+  auth_provider_config: auth_provider_config_order_by
+  created_at: order_by
+  id: order_by
+  method: order_by
+  name: order_by
+  updated_at: order_by
+}
+
+"""
+primary key columns input for table: "auth_provider"
+"""
+input auth_provider_pk_columns_input {
+  id: Int!
+}
+
+"""
+select columns of table "auth_provider"
+"""
+enum auth_provider_select_column {
+  """column name"""
+  active
+
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  method
+
+  """column name"""
+  name
+
+  """column name"""
+  updated_at
+}
+
+"""
+input type for updating data in table "auth_provider"
+"""
+input auth_provider_set_input {
+  active: Boolean
+  created_at: timestamptz
+  id: Int
+  method: String
+  name: String
+  updated_at: timestamptz
+}
+
+"""aggregate stddev on columns"""
+type auth_provider_stddev_fields {
+  id: Float
+}
+
+"""
+order by stddev() on columns of table "auth_provider"
+"""
+input auth_provider_stddev_order_by {
+  id: order_by
+}
+
+"""aggregate stddev_pop on columns"""
+type auth_provider_stddev_pop_fields {
+  id: Float
+}
+
+"""
+order by stddev_pop() on columns of table "auth_provider"
+"""
+input auth_provider_stddev_pop_order_by {
+  id: order_by
+}
+
+"""aggregate stddev_samp on columns"""
+type auth_provider_stddev_samp_fields {
+  id: Float
+}
+
+"""
+order by stddev_samp() on columns of table "auth_provider"
+"""
+input auth_provider_stddev_samp_order_by {
+  id: order_by
+}
+
+"""aggregate sum on columns"""
+type auth_provider_sum_fields {
+  id: Int
+}
+
+"""
+order by sum() on columns of table "auth_provider"
+"""
+input auth_provider_sum_order_by {
+  id: order_by
+}
+
+"""
+update columns of table "auth_provider"
+"""
+enum auth_provider_update_column {
+  """column name"""
+  active
+
+  """column name"""
+  created_at
+
+  """column name"""
+  id
+
+  """column name"""
+  method
+
+  """column name"""
+  name
+
+  """column name"""
+  updated_at
+}
+
+"""aggregate var_pop on columns"""
+type auth_provider_var_pop_fields {
+  id: Float
+}
+
+"""
+order by var_pop() on columns of table "auth_provider"
+"""
+input auth_provider_var_pop_order_by {
+  id: order_by
+}
+
+"""aggregate var_samp on columns"""
+type auth_provider_var_samp_fields {
+  id: Float
+}
+
+"""
+order by var_samp() on columns of table "auth_provider"
+"""
+input auth_provider_var_samp_order_by {
+  id: order_by
+}
+
+"""aggregate variance on columns"""
+type auth_provider_variance_fields {
+  id: Float
+}
+
+"""
+order by variance() on columns of table "auth_provider"
+"""
+input auth_provider_variance_order_by {
+  id: order_by
+}
+
+"""
+expression to compare columns of type Boolean. All fields are combined with logical 'AND'.
+"""
+input Boolean_comparison_exp {
+  _eq: Boolean
+  _gt: Boolean
+  _gte: Boolean
+  _in: [Boolean!]
+  _is_null: Boolean
+  _lt: Boolean
+  _lte: Boolean
+  _neq: Boolean
+  _nin: [Boolean!]
+}
+
+"""
+expression to compare columns of type Int. All fields are combined with logical 'AND'.
+"""
+input Int_comparison_exp {
+  _eq: Int
+  _gt: Int
+  _gte: Int
+  _in: [Int!]
+  _is_null: Boolean
+  _lt: Int
+  _lte: Int
+  _neq: Int
+  _nin: [Int!]
+}
+
+"""mutation root"""
+type mutation_root {
+  """
+  delete data from the table: "auth_provider"
+  """
+  delete_auth_provider(
+    """filter the rows which have to be deleted"""
+    where: auth_provider_bool_exp!
+  ): auth_provider_mutation_response
+
+  """
+  delete single row from the table: "auth_provider"
+  """
+  delete_auth_provider_by_pk(id: Int!): auth_provider
+
+  """
+  delete data from the table: "auth_provider_config"
+  """
+  delete_auth_provider_config(
+    """filter the rows which have to be deleted"""
+    where: auth_provider_config_bool_exp!
+  ): auth_provider_config_mutation_response
+
+  """
+  delete single row from the table: "auth_provider_config"
+  """
+  delete_auth_provider_config_by_pk(id: Int!): auth_provider_config
+
+  """
+  insert data into the table: "auth_provider"
+  """
+  insert_auth_provider(
+    """the rows to be inserted"""
+    objects: [auth_provider_insert_input!]!
+
+    """on conflict condition"""
+    on_conflict: auth_provider_on_conflict
+  ): auth_provider_mutation_response
+
+  """
+  insert data into the table: "auth_provider_config"
+  """
+  insert_auth_provider_config(
+    """the rows to be inserted"""
+    objects: [auth_provider_config_insert_input!]!
+
+    """on conflict condition"""
+    on_conflict: auth_provider_config_on_conflict
+  ): auth_provider_config_mutation_response
+
+  """
+  insert a single row into the table: "auth_provider_config"
+  """
+  insert_auth_provider_config_one(
+    """the row to be inserted"""
+    object: auth_provider_config_insert_input!
+
+    """on conflict condition"""
+    on_conflict: auth_provider_config_on_conflict
+  ): auth_provider_config
+
+  """
+  insert a single row into the table: "auth_provider"
+  """
+  insert_auth_provider_one(
+    """the row to be inserted"""
+    object: auth_provider_insert_input!
+
+    """on conflict condition"""
+    on_conflict: auth_provider_on_conflict
+  ): auth_provider
+
+  """
+  update data of the table: "auth_provider"
+  """
+  update_auth_provider(
+    """increments the integer columns with given value of the filtered values"""
+    _inc: auth_provider_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: auth_provider_set_input
+
+    """filter the rows which have to be updated"""
+    where: auth_provider_bool_exp!
+  ): auth_provider_mutation_response
+
+  """
+  update single row of the table: "auth_provider"
+  """
+  update_auth_provider_by_pk(
+    """increments the integer columns with given value of the filtered values"""
+    _inc: auth_provider_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: auth_provider_set_input
+    pk_columns: auth_provider_pk_columns_input!
+  ): auth_provider
+
+  """
+  update data of the table: "auth_provider_config"
+  """
+  update_auth_provider_config(
+    """increments the integer columns with given value of the filtered values"""
+    _inc: auth_provider_config_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: auth_provider_config_set_input
+
+    """filter the rows which have to be updated"""
+    where: auth_provider_config_bool_exp!
+  ): auth_provider_config_mutation_response
+
+  """
+  update single row of the table: "auth_provider_config"
+  """
+  update_auth_provider_config_by_pk(
+    """increments the integer columns with given value of the filtered values"""
+    _inc: auth_provider_config_inc_input
+
+    """sets the columns of the filtered rows to the given values"""
+    _set: auth_provider_config_set_input
+    pk_columns: auth_provider_config_pk_columns_input!
+  ): auth_provider_config
+}
+
+"""column ordering options"""
+enum order_by {
+  """in the ascending order, nulls last"""
+  asc
+
+  """in the ascending order, nulls first"""
+  asc_nulls_first
+
+  """in the ascending order, nulls last"""
+  asc_nulls_last
+
+  """in the descending order, nulls first"""
+  desc
+
+  """in the descending order, nulls first"""
+  desc_nulls_first
+
+  """in the descending order, nulls last"""
+  desc_nulls_last
+}
+
+"""query root"""
+type query_root {
+  """
+  fetch data from the table: "auth_provider"
+  """
+  auth_provider(
+    """distinct select on columns"""
+    distinct_on: [auth_provider_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [auth_provider_order_by!]
+
+    """filter the rows returned"""
+    where: auth_provider_bool_exp
+  ): [auth_provider!]!
+
+  """
+  fetch aggregated fields from the table: "auth_provider"
+  """
+  auth_provider_aggregate(
+    """distinct select on columns"""
+    distinct_on: [auth_provider_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [auth_provider_order_by!]
+
+    """filter the rows returned"""
+    where: auth_provider_bool_exp
+  ): auth_provider_aggregate!
+
+  """fetch data from the table: "auth_provider" using primary key columns"""
+  auth_provider_by_pk(id: Int!): auth_provider
+
+  """
+  fetch data from the table: "auth_provider_config"
+  """
+  auth_provider_config(
+    """distinct select on columns"""
+    distinct_on: [auth_provider_config_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [auth_provider_config_order_by!]
+
+    """filter the rows returned"""
+    where: auth_provider_config_bool_exp
+  ): [auth_provider_config!]!
+
+  """
+  fetch aggregated fields from the table: "auth_provider_config"
+  """
+  auth_provider_config_aggregate(
+    """distinct select on columns"""
+    distinct_on: [auth_provider_config_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [auth_provider_config_order_by!]
+
+    """filter the rows returned"""
+    where: auth_provider_config_bool_exp
+  ): auth_provider_config_aggregate!
+
+  """
+  fetch data from the table: "auth_provider_config" using primary key columns
+  """
+  auth_provider_config_by_pk(id: Int!): auth_provider_config
+}
+
+"""
+expression to compare columns of type String. All fields are combined with logical 'AND'.
+"""
+input String_comparison_exp {
+  _eq: String
+  _gt: String
+  _gte: String
+  _ilike: String
+  _in: [String!]
+  _is_null: Boolean
+  _like: String
+  _lt: String
+  _lte: String
+  _neq: String
+  _nilike: String
+  _nin: [String!]
+  _nlike: String
+  _nsimilar: String
+  _similar: String
+}
+
+"""subscription root"""
+type subscription_root {
+  """
+  fetch data from the table: "auth_provider"
+  """
+  auth_provider(
+    """distinct select on columns"""
+    distinct_on: [auth_provider_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [auth_provider_order_by!]
+
+    """filter the rows returned"""
+    where: auth_provider_bool_exp
+  ): [auth_provider!]!
+
+  """
+  fetch aggregated fields from the table: "auth_provider"
+  """
+  auth_provider_aggregate(
+    """distinct select on columns"""
+    distinct_on: [auth_provider_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [auth_provider_order_by!]
+
+    """filter the rows returned"""
+    where: auth_provider_bool_exp
+  ): auth_provider_aggregate!
+
+  """fetch data from the table: "auth_provider" using primary key columns"""
+  auth_provider_by_pk(id: Int!): auth_provider
+
+  """
+  fetch data from the table: "auth_provider_config"
+  """
+  auth_provider_config(
+    """distinct select on columns"""
+    distinct_on: [auth_provider_config_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [auth_provider_config_order_by!]
+
+    """filter the rows returned"""
+    where: auth_provider_config_bool_exp
+  ): [auth_provider_config!]!
+
+  """
+  fetch aggregated fields from the table: "auth_provider_config"
+  """
+  auth_provider_config_aggregate(
+    """distinct select on columns"""
+    distinct_on: [auth_provider_config_select_column!]
+
+    """limit the number of rows returned"""
+    limit: Int
+
+    """skip the first n rows. Use only with order_by"""
+    offset: Int
+
+    """sort the rows by one or more columns"""
+    order_by: [auth_provider_config_order_by!]
+
+    """filter the rows returned"""
+    where: auth_provider_config_bool_exp
+  ): auth_provider_config_aggregate!
+
+  """
+  fetch data from the table: "auth_provider_config" using primary key columns
+  """
+  auth_provider_config_by_pk(id: Int!): auth_provider_config
+}
+
+scalar timestamptz
+
+"""
+expression to compare columns of type timestamptz. All fields are combined with logical 'AND'.
+"""
+input timestamptz_comparison_exp {
+  _eq: timestamptz
+  _gt: timestamptz
+  _gte: timestamptz
+  _in: [timestamptz!]
+  _is_null: Boolean
+  _lt: timestamptz
+  _lte: timestamptz
+  _neq: timestamptz
+  _nin: [timestamptz!]
 }
 

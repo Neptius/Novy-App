@@ -1,0 +1,8 @@
+query AuthProvider {
+    auth_provider {
+        id
+        method
+        name
+        active
+    }
+ }

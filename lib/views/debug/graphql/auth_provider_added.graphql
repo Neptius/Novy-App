@@ -1,8 +1,0 @@
-subscription AuthProviderAdded {
-  authProviderAdded {
-    id
-    name
-    method
-    active
-  }
-}

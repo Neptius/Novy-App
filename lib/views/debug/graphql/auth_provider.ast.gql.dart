@@ -2,14 +2,14 @@
 
 import 'package:gql/ast.dart' as _i1;
 
-const AuthProviderBy = _i1.OperationDefinitionNode(
+const AuthProvider = _i1.OperationDefinitionNode(
     type: _i1.OperationType.query,
-    name: _i1.NameNode(value: 'AuthProviderBy'),
+    name: _i1.NameNode(value: 'AuthProvider'),
     variableDefinitions: [],
     directives: [],
     selectionSet: _i1.SelectionSetNode(selections: [
       _i1.FieldNode(
-          name: _i1.NameNode(value: 'authProviderBy'),
+          name: _i1.NameNode(value: 'auth_provider'),
           alias: null,
           arguments: [],
           directives: [],
@@ -21,13 +21,13 @@ const AuthProviderBy = _i1.OperationDefinitionNode(
                 directives: [],
                 selectionSet: null),
             _i1.FieldNode(
-                name: _i1.NameNode(value: 'name'),
+                name: _i1.NameNode(value: 'method'),
                 alias: null,
                 arguments: [],
                 directives: [],
                 selectionSet: null),
             _i1.FieldNode(
-                name: _i1.NameNode(value: 'method'),
+                name: _i1.NameNode(value: 'name'),
                 alias: null,
                 arguments: [],
                 directives: [],
@@ -40,4 +40,4 @@ const AuthProviderBy = _i1.OperationDefinitionNode(
                 selectionSet: null)
           ]))
     ]));
-const document = _i1.DocumentNode(definitions: [AuthProviderBy]);
+const document = _i1.DocumentNode(definitions: [AuthProvider]);

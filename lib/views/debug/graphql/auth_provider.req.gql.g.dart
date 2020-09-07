@@ -1,28 +1,28 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'auth_provider_by.req.gql.dart';
+part of 'auth_provider.req.gql.dart';
 
 // **************************************************************************
 // BuiltValueGenerator
 // **************************************************************************
 
-Serializer<GAuthProviderByReq> _$gAuthProviderByReqSerializer =
-    new _$GAuthProviderByReqSerializer();
+Serializer<GAuthProviderReq> _$gAuthProviderReqSerializer =
+    new _$GAuthProviderReqSerializer();
 
-class _$GAuthProviderByReqSerializer
-    implements StructuredSerializer<GAuthProviderByReq> {
+class _$GAuthProviderReqSerializer
+    implements StructuredSerializer<GAuthProviderReq> {
   @override
-  final Iterable<Type> types = const [GAuthProviderByReq, _$GAuthProviderByReq];
+  final Iterable<Type> types = const [GAuthProviderReq, _$GAuthProviderReq];
   @override
-  final String wireName = 'GAuthProviderByReq';
+  final String wireName = 'GAuthProviderReq';
 
   @override
-  Iterable<Object> serialize(Serializers serializers, GAuthProviderByReq object,
+  Iterable<Object> serialize(Serializers serializers, GAuthProviderReq object,
       {FullType specifiedType = FullType.unspecified}) {
     final result = <Object>[
       'vars',
       serializers.serialize(object.vars,
-          specifiedType: const FullType(_i3.GAuthProviderByVars)),
+          specifiedType: const FullType(_i3.GAuthProviderVars)),
       'operation',
       serializers.serialize(object.operation,
           specifiedType: const FullType(_i4.Operation)),
@@ -37,7 +37,7 @@ class _$GAuthProviderByReqSerializer
       result
         ..add('optimisticResponse')
         ..add(serializers.serialize(object.optimisticResponse,
-            specifiedType: const FullType(_i2.GAuthProviderByData)));
+            specifiedType: const FullType(_i2.GAuthProviderData)));
     }
     if (object.updateCacheHandlerKey != null) {
       result
@@ -62,10 +62,10 @@ class _$GAuthProviderByReqSerializer
   }
 
   @override
-  GAuthProviderByReq deserialize(
+  GAuthProviderReq deserialize(
       Serializers serializers, Iterable<Object> serialized,
       {FullType specifiedType = FullType.unspecified}) {
-    final result = new GAuthProviderByReqBuilder();
+    final result = new GAuthProviderReqBuilder();
 
     final iterator = serialized.iterator;
     while (iterator.moveNext()) {
@@ -75,8 +75,8 @@ class _$GAuthProviderByReqSerializer
       switch (key) {
         case 'vars':
           result.vars.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i3.GAuthProviderByVars))
-              as _i3.GAuthProviderByVars);
+                  specifiedType: const FullType(_i3.GAuthProviderVars))
+              as _i3.GAuthProviderVars);
           break;
         case 'operation':
           result.operation = serializers.deserialize(value,
@@ -88,8 +88,8 @@ class _$GAuthProviderByReqSerializer
           break;
         case 'optimisticResponse':
           result.optimisticResponse.replace(serializers.deserialize(value,
-                  specifiedType: const FullType(_i2.GAuthProviderByData))
-              as _i2.GAuthProviderByData);
+                  specifiedType: const FullType(_i2.GAuthProviderData))
+              as _i2.GAuthProviderData);
           break;
         case 'updateCacheHandlerKey':
           result.updateCacheHandlerKey = serializers.deserialize(value,
@@ -114,18 +114,18 @@ class _$GAuthProviderByReqSerializer
   }
 }
 
-class _$GAuthProviderByReq extends GAuthProviderByReq {
+class _$GAuthProviderReq extends GAuthProviderReq {
   @override
-  final _i3.GAuthProviderByVars vars;
+  final _i3.GAuthProviderVars vars;
   @override
   final _i4.Operation operation;
   @override
   final String requestId;
   @override
-  final _i2.GAuthProviderByData Function(
-      _i2.GAuthProviderByData, _i2.GAuthProviderByData) updateResult;
+  final _i2.GAuthProviderData Function(
+      _i2.GAuthProviderData, _i2.GAuthProviderData) updateResult;
   @override
-  final _i2.GAuthProviderByData optimisticResponse;
+  final _i2.GAuthProviderData optimisticResponse;
   @override
   final String updateCacheHandlerKey;
   @override
@@ -133,11 +133,11 @@ class _$GAuthProviderByReq extends GAuthProviderByReq {
   @override
   final _i1.FetchPolicy fetchPolicy;
 
-  factory _$GAuthProviderByReq(
-          [void Function(GAuthProviderByReqBuilder) updates]) =>
-      (new GAuthProviderByReqBuilder()..update(updates)).build();
+  factory _$GAuthProviderReq(
+          [void Function(GAuthProviderReqBuilder) updates]) =>
+      (new GAuthProviderReqBuilder()..update(updates)).build();
 
-  _$GAuthProviderByReq._(
+  _$GAuthProviderReq._(
       {this.vars,
       this.operation,
       this.requestId,
@@ -148,27 +148,26 @@ class _$GAuthProviderByReq extends GAuthProviderByReq {
       this.fetchPolicy})
       : super._() {
     if (vars == null) {
-      throw new BuiltValueNullFieldError('GAuthProviderByReq', 'vars');
+      throw new BuiltValueNullFieldError('GAuthProviderReq', 'vars');
     }
     if (operation == null) {
-      throw new BuiltValueNullFieldError('GAuthProviderByReq', 'operation');
+      throw new BuiltValueNullFieldError('GAuthProviderReq', 'operation');
     }
   }
 
   @override
-  GAuthProviderByReq rebuild(
-          void Function(GAuthProviderByReqBuilder) updates) =>
+  GAuthProviderReq rebuild(void Function(GAuthProviderReqBuilder) updates) =>
       (toBuilder()..update(updates)).build();
 
   @override
-  GAuthProviderByReqBuilder toBuilder() =>
-      new GAuthProviderByReqBuilder()..replace(this);
+  GAuthProviderReqBuilder toBuilder() =>
+      new GAuthProviderReqBuilder()..replace(this);
 
   @override
   bool operator ==(Object other) {
     if (identical(other, this)) return true;
     final dynamic _$dynamicOther = other;
-    return other is GAuthProviderByReq &&
+    return other is GAuthProviderReq &&
         vars == other.vars &&
         operation == other.operation &&
         requestId == other.requestId &&
@@ -197,7 +196,7 @@ class _$GAuthProviderByReq extends GAuthProviderByReq {
 
   @override
   String toString() {
-    return (newBuiltValueToStringHelper('GAuthProviderByReq')
+    return (newBuiltValueToStringHelper('GAuthProviderReq')
           ..add('vars', vars)
           ..add('operation', operation)
           ..add('requestId', requestId)
@@ -210,14 +209,14 @@ class _$GAuthProviderByReq extends GAuthProviderByReq {
   }
 }
 
-class GAuthProviderByReqBuilder
-    implements Builder<GAuthProviderByReq, GAuthProviderByReqBuilder> {
-  _$GAuthProviderByReq _$v;
+class GAuthProviderReqBuilder
+    implements Builder<GAuthProviderReq, GAuthProviderReqBuilder> {
+  _$GAuthProviderReq _$v;
 
-  _i3.GAuthProviderByVarsBuilder _vars;
-  _i3.GAuthProviderByVarsBuilder get vars =>
-      _$this._vars ??= new _i3.GAuthProviderByVarsBuilder();
-  set vars(_i3.GAuthProviderByVarsBuilder vars) => _$this._vars = vars;
+  _i3.GAuthProviderVarsBuilder _vars;
+  _i3.GAuthProviderVarsBuilder get vars =>
+      _$this._vars ??= new _i3.GAuthProviderVarsBuilder();
+  set vars(_i3.GAuthProviderVarsBuilder vars) => _$this._vars = vars;
 
   _i4.Operation _operation;
   _i4.Operation get operation => _$this._operation;
@@ -227,21 +226,20 @@ class GAuthProviderByReqBuilder
   String get requestId => _$this._requestId;
   set requestId(String requestId) => _$this._requestId = requestId;
 
-  _i2.GAuthProviderByData Function(
-      _i2.GAuthProviderByData, _i2.GAuthProviderByData) _updateResult;
-  _i2.GAuthProviderByData Function(
-          _i2.GAuthProviderByData, _i2.GAuthProviderByData)
+  _i2.GAuthProviderData Function(_i2.GAuthProviderData, _i2.GAuthProviderData)
+      _updateResult;
+  _i2.GAuthProviderData Function(_i2.GAuthProviderData, _i2.GAuthProviderData)
       get updateResult => _$this._updateResult;
   set updateResult(
-          _i2.GAuthProviderByData Function(
-                  _i2.GAuthProviderByData, _i2.GAuthProviderByData)
+          _i2.GAuthProviderData Function(
+                  _i2.GAuthProviderData, _i2.GAuthProviderData)
               updateResult) =>
       _$this._updateResult = updateResult;
 
-  _i2.GAuthProviderByDataBuilder _optimisticResponse;
-  _i2.GAuthProviderByDataBuilder get optimisticResponse =>
-      _$this._optimisticResponse ??= new _i2.GAuthProviderByDataBuilder();
-  set optimisticResponse(_i2.GAuthProviderByDataBuilder optimisticResponse) =>
+  _i2.GAuthProviderDataBuilder _optimisticResponse;
+  _i2.GAuthProviderDataBuilder get optimisticResponse =>
+      _$this._optimisticResponse ??= new _i2.GAuthProviderDataBuilder();
+  set optimisticResponse(_i2.GAuthProviderDataBuilder optimisticResponse) =>
       _$this._optimisticResponse = optimisticResponse;
 
   String _updateCacheHandlerKey;
@@ -261,11 +259,11 @@ class GAuthProviderByReqBuilder
   set fetchPolicy(_i1.FetchPolicy fetchPolicy) =>
       _$this._fetchPolicy = fetchPolicy;
 
-  GAuthProviderByReqBuilder() {
-    GAuthProviderByReq._initializeBuilder(this);
+  GAuthProviderReqBuilder() {
+    GAuthProviderReq._initializeBuilder(this);
   }
 
-  GAuthProviderByReqBuilder get _$this {
+  GAuthProviderReqBuilder get _$this {
     if (_$v != null) {
       _vars = _$v.vars?.toBuilder();
       _operation = _$v.operation;
@@ -281,24 +279,24 @@ class GAuthProviderByReqBuilder
   }
 
   @override
-  void replace(GAuthProviderByReq other) {
+  void replace(GAuthProviderReq other) {
     if (other == null) {
       throw new ArgumentError.notNull('other');
     }
-    _$v = other as _$GAuthProviderByReq;
+    _$v = other as _$GAuthProviderReq;
   }
 
   @override
-  void update(void Function(GAuthProviderByReqBuilder) updates) {
+  void update(void Function(GAuthProviderReqBuilder) updates) {
     if (updates != null) updates(this);
   }
 
   @override
-  _$GAuthProviderByReq build() {
-    _$GAuthProviderByReq _$result;
+  _$GAuthProviderReq build() {
+    _$GAuthProviderReq _$result;
     try {
       _$result = _$v ??
-          new _$GAuthProviderByReq._(
+          new _$GAuthProviderReq._(
               vars: vars.build(),
               operation: operation,
               requestId: requestId,
@@ -317,7 +315,7 @@ class GAuthProviderByReqBuilder
         _optimisticResponse?.build();
       } catch (e) {
         throw new BuiltValueNestedFieldError(
-            'GAuthProviderByReq', _$failedField, e.toString());
+            'GAuthProviderReq', _$failedField, e.toString());
       }
       rethrow;
     }

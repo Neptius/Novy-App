@@ -1,8 +1,0 @@
-query AuthProviderBy {
-   authProviderBy {
-     id
-     name
-     method
-     active
-   }
- }
