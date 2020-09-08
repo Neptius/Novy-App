@@ -4,9 +4,9 @@ import 'package:get_it/get_it.dart';
 import 'package:ferry_flutter/ferry_flutter.dart';
 import 'package:built_collection/built_collection.dart';
 
-import './graphql/auth_provider.data.gql.dart';
-import './graphql/auth_provider.req.gql.dart';
-import './graphql/auth_provider.var.gql.dart';
+import './graphql/auth_provider_subscribe.data.gql.dart';
+import './graphql/auth_provider_subscribe.req.gql.dart';
+import './graphql/auth_provider_subscribe.var.gql.dart';
 
 class DebugPage extends StatelessWidget {
   static const routeName = "/debug";
@@ -21,12 +21,11 @@ class DebugPage extends StatelessWidget {
           elevation: 0,
         ),
         body: Query(
-
             client: client,
-            operationRequest: GAuthProviderReq(),
+            operationRequest: GAuthProviderSubscribeReq(),
             builder: (BuildContext context,
-                OperationResponse<GAuthProviderData, GAuthProviderVars>
-                response) {
+                OperationResponse<GAuthProviderSubscribeData, GAuthProviderSubscribeVars>
+                    response) {
               if (response.hasErrors) {
                 return Text(response.graphqlErrors.toString());
               }
@@ -35,8 +34,7 @@ class DebugPage extends StatelessWidget {
                 return Center(child: CircularProgressIndicator());
               }
 
-              final authProviders =
-                  response.data?.auth_provider ?? BuiltList();
+              final authProviders = response.data?.auth_provider ?? BuiltList();
 
               print(authProviders);
               print(authProviders.length);

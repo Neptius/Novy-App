@@ -63,6 +63,12 @@ import 'package:novy_app/views/debug/graphql/auth_provider.req.gql.dart'
     show GAuthProviderReq;
 import 'package:novy_app/views/debug/graphql/auth_provider.var.gql.dart'
     show GAuthProviderVars;
+import 'package:novy_app/views/debug/graphql/auth_provider_subscribe.data.gql.dart'
+    show GAuthProviderSubscribeData, GAuthProviderSubscribeData_auth_provider;
+import 'package:novy_app/views/debug/graphql/auth_provider_subscribe.req.gql.dart'
+    show GAuthProviderSubscribeReq;
+import 'package:novy_app/views/debug/graphql/auth_provider_subscribe.var.gql.dart'
+    show GAuthProviderSubscribeVars;
 
 part 'serializers.gql.g.dart';
 
@@ -71,8 +77,11 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   ..addPlugin(StandardJsonPlugin());
 @SerializersFor([
   GAuthProviderReq,
+  GAuthProviderSubscribeReq,
   GAuthProviderData,
   GAuthProviderData_auth_provider,
+  GAuthProviderSubscribeData,
+  GAuthProviderSubscribeData_auth_provider,
   Gauth_provider_aggregate_order_by,
   Gauth_provider_arr_rel_insert_input,
   Gauth_provider_avg_order_by,
@@ -125,6 +134,7 @@ final SerializersBuilder _serializersBuilder = _$serializers.toBuilder()
   GString_comparison_exp,
   Gtimestamptz,
   Gtimestamptz_comparison_exp,
-  GAuthProviderVars
+  GAuthProviderVars,
+  GAuthProviderSubscribeVars
 ])
 final Serializers serializers = _serializersBuilder.build();

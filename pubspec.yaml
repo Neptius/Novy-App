@@ -22,6 +22,7 @@ dependencies:
   ferry: #[latest-version]
   ferry_flutter: #[latest-version]
   gql_http_link: #[latest-version]
+  gql_websocket_link:  #[latest-version]
   hive: #[latest-version]
   ferry_hive_store: #[latest-version]
   hive_flutter: #[latest-version]

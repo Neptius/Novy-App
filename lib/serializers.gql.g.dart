@@ -10,6 +10,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
       ..add(GAuthProviderData.serializer)
       ..add(GAuthProviderData_auth_provider.serializer)
       ..add(GAuthProviderReq.serializer)
+      ..add(GAuthProviderSubscribeData.serializer)
+      ..add(GAuthProviderSubscribeData_auth_provider.serializer)
+      ..add(GAuthProviderSubscribeReq.serializer)
+      ..add(GAuthProviderSubscribeVars.serializer)
       ..add(GAuthProviderVars.serializer)
       ..add(GBoolean_comparison_exp.serializer)
       ..add(GInt_comparison_exp.serializer)
@@ -67,6 +71,10 @@ Serializers _$serializers = (new Serializers().toBuilder()
           const FullType(BuiltList,
               const [const FullType(GAuthProviderData_auth_provider)]),
           () => new ListBuilder<GAuthProviderData_auth_provider>())
+      ..addBuilderFactory(
+          const FullType(BuiltList,
+              const [const FullType(GAuthProviderSubscribeData_auth_provider)]),
+          () => new ListBuilder<GAuthProviderSubscribeData_auth_provider>())
       ..addBuilderFactory(
           const FullType(
               BuiltList, const [const FullType(Gauth_provider_bool_exp)]),
