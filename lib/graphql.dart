@@ -23,9 +23,7 @@ Future<Client> initClient() async {
   final WebSocketLink websocketLink = WebSocketLink(websocketUrl);
 
   final Link link = Link.from([
-    // SomeLink(),
-    // HttpLink(url),
-    websocketLink,
+    // websocketLink,
     httpLink
   ]);
 

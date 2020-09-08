@@ -8,8 +8,21 @@ import './graphql/auth_provider_subscribe.data.gql.dart';
 import './graphql/auth_provider_subscribe.req.gql.dart';
 import './graphql/auth_provider_subscribe.var.gql.dart';
 
-class DebugPage extends StatelessWidget {
+import './graphql/auth_provider.data.gql.dart';
+import './graphql/auth_provider.req.gql.dart';
+import './graphql/auth_provider.var.gql.dart';
+
+class DebugPage extends StatefulWidget {
   static const routeName = "/debug";
+
+  @override
+  State<StatefulWidget> createState() {
+    // TODO: implement createState
+    return DebugPageState();
+  }
+}
+
+class DebugPageState extends State<DebugPage> {
   final client = GetIt.I<Client>();
 
   @override
@@ -22,15 +35,17 @@ class DebugPage extends StatelessWidget {
         ),
         body: Query(
             client: client,
-            operationRequest: GAuthProviderSubscribeReq(),
+            operationRequest: GAuthProviderReq(
+                (b) => b
+                  ..fetchPolicy = FetchPolicy.CacheAndNetwork
+            ),
             builder: (BuildContext context,
-                OperationResponse<GAuthProviderSubscribeData, GAuthProviderSubscribeVars>
+                OperationResponse<GAuthProviderData, GAuthProviderVars>
                     response) {
               print("load");
               if (response.hasErrors) {
                 return Text(response.graphqlErrors.toString());
               }
-              print("load 2");
 
               if (response.loading) {
                 return Center(child: CircularProgressIndicator());
