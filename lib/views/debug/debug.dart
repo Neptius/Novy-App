@@ -26,9 +26,11 @@ class DebugPage extends StatelessWidget {
             builder: (BuildContext context,
                 OperationResponse<GAuthProviderSubscribeData, GAuthProviderSubscribeVars>
                     response) {
+              print("load");
               if (response.hasErrors) {
                 return Text(response.graphqlErrors.toString());
               }
+              print("load 2");
 
               if (response.loading) {
                 return Center(child: CircularProgressIndicator());

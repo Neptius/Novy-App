@@ -13,22 +13,23 @@ Future<Client> initClient() async {
   // OR, if using flutter
   await Hive.initFlutter();
 
-  final box = await Hive.openBox("graphql");
+  final Box box = await Hive.openBox("graphql");
 
-  final store = HiveStore(box);
+  final Store store = HiveStore(box);
 
-  final cache = Cache(store: store);
+  final Cache cache = Cache(store: store);
 
-  // final link = HttpLink(url);
+  final HttpLink httpLink = HttpLink(url);
+  final WebSocketLink websocketLink = WebSocketLink(websocketUrl);
 
-
-  final link = Link.from([
+  final Link link = Link.from([
     // SomeLink(),
     // HttpLink(url),
-    WebSocketLink(websocketUrl),
+    websocketLink,
+    httpLink
   ]);
 
-  final client = Client(
+  final Client client = Client(
     link: link,
     cache: cache,
   );
