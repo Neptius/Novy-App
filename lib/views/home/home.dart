@@ -46,6 +46,8 @@ class _HomePageState extends State<HomePage> {
               style: Theme.of(context).textTheme.display1,
             ),
             RaisedButton(
+              textColor: Colors.black,
+              color: Colors.tealAccent,
               onPressed: () {
                 Navigator.of(context).pushNamed(DebugPage.routeName);
               },
